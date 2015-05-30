@@ -11,6 +11,8 @@ and open the template in the editor.
     position: absolute;
     top: 150px;
     text-align: center;
+    width: 600px;
+    height: 300px;
     
 }
 body {
@@ -22,7 +24,6 @@ body {
 #topmenu li {
     list-style: none;
     display: inline;
-    text-align: center;
     padding: 10px;
     background-color: #ccc;
 }
@@ -71,12 +72,23 @@ body {
     margin-top: 150px;
 }
 
-#test {
-    text-align: center;
-}
-
-.teams {
+.Teams {
     position: absolute;
     left: 150px;
     margin-left: 150px;
+}
+
+#legend li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+}
+
+#team1 {
+    color: rgba(220,0,0,1);
+}
+
+#team2 {
+    color: rgba(0,220,0,1);
 }

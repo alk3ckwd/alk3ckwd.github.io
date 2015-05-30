@@ -5,8 +5,8 @@ function updateChartData(){
 	var OPassPCT = JSON.parse(OText)
 	var TeamList = Object.keys(DPassPCT);
 	//var temp = result[0];
-	var select1 = document.getElementById("dropdown1");
-	var select2 = document.getElementById("dropdown2");
+	var select1 = document.getElementById("OTeam_Select");
+	var select2 = document.getElementById("DTeam_Select");
 	var team1 = select1.options[select1.selectedIndex].text;
 	var team2 = select2.options[select2.selectedIndex].text;
     
@@ -21,24 +21,17 @@ function updateChartData(){
 	};
 
 	makeRadar(team1, data1, team2, data2);
-
 }	 
 
-function updateVersus(data){
+function updateVersus(tempdata){
     var legend = "<ul id=\"legend\">";
-    for (var i = 0; i < data["datasets"].length; i++) {
-        legend += "<li><div id=\"team" + i+1 + "\"></div>" + 
-        data["datasets"][i]["lable"] + "</li>"
+    for (var i = 0; i < tempdata["datasets"].length; i++) {
+        legend += "<li id=\"team" + (i + 1) + "\">" + 
+        tempdata["datasets"][i]["label"] + "</li>"
     };
     legend += "</ul>"
     document.getElementById("versus").innerHTML = legend;
 };
-
-    // var versus = document.createElement("P");
-    // var versus_text = document.createTextNode(team1 + " VS. " + team2)
-    // versus.appendChild(versus_text)
-    // document.getElementById("versus").appendChild(versus)
-    //document.getElementById("main").innerHTML = team1 + " VS. " + team2;
 
 function makeRadar(team1, data1, team2, data2){           
     var data = {
@@ -80,11 +73,11 @@ $(document).ready(function(){
 	var result = Object.keys(DPassPCT);
 	for (var i = 0; i < result.length; i++) {
 		var option = $('<option></option>').text(result[i]);
-		$('#dropdown1').append(option);
+		$('#OTeam_Select').append(option);
 	};
 	for (var i = 0; i < result.length; i++) {
 		var option = $('<option></option>').text(result[i]);
-		$('#dropdown2').append(option);
+		$('#DTeam_Select').append(option);
 	};
 	updateChartData();
 });
